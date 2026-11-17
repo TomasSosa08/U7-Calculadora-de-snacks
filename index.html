@@ -1,13 +1,216 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Calculadora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora interactiva de snacks y presupuesto de viaje.">
+  <title>SnackCalc | Calculadora de Snacks y Viajes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-    <h1>Calculadora de snacks y viajes</h1>
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
 
-    <script src="script.js"></script>
+  <header class="navbar">
+    <a href="#" class="logo">
+      <span class="logo-icon">S</span>
+      <span>Snack<span class="logo-accent">Calc</span></span>
+    </a>
+
+    <nav>
+      <a href="#snacks">Snack calculator</a>
+      <a href="#travel">Travel budget</a>
+    </nav>
+
+    <a href="#calculator" class="nav-button">Get started <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="calculator">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="status-dot"></span> YOUR SMART CALCULATION TOOL</div>
+        <h1>Small snacks.<br><span>Big calculations.</span></h1>
+        <p class="hero-description">
+          Discover how many snacks you could eat over time and plan your travel food budget with a few simple calculations.
+        </p>
+        <div class="hero-actions">
+          <a href="#snacks" class="primary-button">Calculate my snacks <span>→</span></a>
+          <a href="#travel" class="secondary-button">Plan a trip</a>
+        </div>
+        <div class="hero-note">
+          <span class="note-icon">✦</span>
+          Simple inputs. Instant results. Smarter decisions.
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-top">
+            <span class="visual-label">YOUR DAILY SNACK</span>
+            <span class="live-badge"><span></span> LIVE</span>
+          </div>
+          <div class="snack-emoji">🍿</div>
+          <h3>Snack time</h3>
+          <p>A little treat can add up over time.</p>
+          <div class="visual-divider"></div>
+          <div class="visual-bottom">
+            <div>
+              <span class="mini-label">CALCULATE</span>
+              <strong>Your future snacks</strong>
+            </div>
+            <span class="visual-arrow">↗</span>
+          </div>
+        </div>
+        <div class="floating-chip chip-top">✦ Smart planning</div>
+        <div class="floating-chip chip-bottom">🍫 Snack smarter</div>
+      </div>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <span class="section-kicker">THE CALCULATORS</span>
+        <h2>Make every number count.</h2>
+        <p>Choose what you want to calculate and get your results instantly.</p>
+      </div>
+      <div class="section-number">01 — 02</div>
+    </section>
+
+    <section class="calculator-grid">
+      <article class="calculator-card" id="snacks">
+        <div class="card-header">
+          <div class="card-icon purple-icon">🍿</div>
+          <span class="card-tag">CALCULATOR 01</span>
+        </div>
+        <h3>Your lifetime snacks</h3>
+        <p class="card-description">
+          Estimate how many snacks you could eat between your current age and your target age.
+        </p>
+
+        <form id="snackForm">
+          <div class="input-row">
+            <div class="input-group">
+              <label for="currentAge">Current age</label>
+              <input type="number" id="currentAge" min="1" max="120" value="16" required>
+            </div>
+            <div class="input-group">
+              <label for="targetAge">Target age</label>
+              <input type="number" id="targetAge" min="1" max="120" value="80" required>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="snackName">Your favorite snack</label>
+            <input type="text" id="snackName" value="Chocolate" placeholder="e.g. Chocolate" required>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="snacksPerDay">Snacks per day</label>
+              <input type="number" id="snacksPerDay" min="0" step="0.1" value="2" required>
+            </div>
+            <div class="input-group">
+              <label for="snackPrice">Price per snack ($)</label>
+              <input type="number" id="snackPrice" min="0" step="0.01" value="1500" required>
+            </div>
+          </div>
+
+          <button type="submit" class="calculate-button">Calculate my snacks <span>→</span></button>
+        </form>
+
+        <div class="result-panel" id="snackResult" aria-live="polite">
+          <div class="result-topline">
+            <span>YOUR RESULTS</span>
+            <span class="result-status">READY</span>
+          </div>
+          <p class="result-caption">You could eat</p>
+          <div class="result-number" id="snackCount">—</div>
+          <p class="result-unit" id="snackResultName">snacks in your lifetime</p>
+          <div class="result-divider"></div>
+          <div class="result-detail">
+            <span>Estimated total cost</span>
+            <strong id="snackTotalCost">$—</strong>
+          </div>
+          <div class="result-detail">
+            <span>Years calculated</span>
+            <strong id="snackYears">—</strong>
+          </div>
+        </div>
+      </article>
+
+      <article class="calculator-card travel-card" id="travel">
+        <div class="card-header">
+          <div class="card-icon blue-icon">✈️</div>
+          <span class="card-tag">CALCULATOR 02</span>
+        </div>
+        <h3>Your travel food budget</h3>
+        <p class="card-description">
+          Find out how much money you can spend on each meal during your next trip.
+        </p>
+
+        <form id="travelForm">
+          <div class="input-group">
+            <label for="tripDays">Number of travel days</label>
+            <input type="number" id="tripDays" min="1" max="365" value="7" required>
+          </div>
+
+          <div class="input-group">
+            <label for="mealsPerDay">Meals per day</label>
+            <input type="number" id="mealsPerDay" min="1" max="10" value="3" required>
+          </div>
+
+          <div class="input-group">
+            <label for="travelBudget">Total food budget ($)</label>
+            <input type="number" id="travelBudget" min="0" step="0.01" value="350000" required>
+          </div>
+
+          <button type="submit" class="calculate-button blue-button">Calculate my budget <span>→</span></button>
+        </form>
+
+        <div class="result-panel blue-result" id="travelResult" aria-live="polite">
+          <div class="result-topline">
+            <span>YOUR RESULTS</span>
+            <span class="result-status">READY</span>
+          </div>
+          <p class="result-caption">You can spend</p>
+          <div class="result-number" id="budgetPerMeal">—</div>
+          <p class="result-unit">per meal</p>
+          <div class="result-divider"></div>
+          <div class="result-detail">
+            <span>Total meals</span>
+            <strong id="totalMeals">—</strong>
+          </div>
+          <div class="result-detail">
+            <span>Budget per day</span>
+            <strong id="budgetPerDay">$—</strong>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="bottom-banner">
+      <div class="banner-icon">✦</div>
+      <div>
+        <h3>Plan better. Enjoy more.</h3>
+        <p>Good planning means more room for the things you love.</p>
+      </div>
+      <a href="#calculator" class="banner-link">Back to top ↑</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo footer-logo">
+      <span class="logo-icon">S</span>
+      <span>Snack<span class="logo-accent">Calc</span></span>
+    </a>
+    <p>Made for snack lovers and smart travelers.</p>
+    <span class="copyright">© 2026 SnackCalc</span>
+  </footer>
+
 </body>
 </html>
